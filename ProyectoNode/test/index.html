@@ -1,0 +1,13 @@
+<link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet" />
+<script src="https://cdn.rawgit.com/jquery/jquery/2.1.4/dist/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/Automattic/expect.js/0.3.1/index.js"></script>
+<script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
+<script>mocha.setup('bdd')</script>
+<script src="../dest/archivo.min.js"></script> // Aquí cargaremos el script que tiene las funciones que vamos a
+probar
+<script src="test.js"></script> //Aquí cargaremos las pruebas que se van a realizar.
+<script>
+    mocha.checkLeaks();
+    mocha.globals(['jQuery']);
+    mocha.run();
+</script>
