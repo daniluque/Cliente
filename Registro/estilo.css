@@ -2,14 +2,6 @@
     padding: 5px;
 }
 
-.prueba {
-    border: 1px dashed purple;
-}
-
-.prueba2 {
-    color: yellow;
-}
-
 .divEjemplo {
     border: 2px solid green;
 }
@@ -25,15 +17,13 @@
 }
 
 .inputErroneo {
-    border: 1px solid red;
+    border: 3px solid red;
     color: black;
-    background-color: pink;
 }
 
 .inputCorrecto {
-    border: 1px solid green;
+    border: 3px solid green;
     color: black;
-    background-color: aquamarine;
 }
 
 .cuadroEjercicios {
