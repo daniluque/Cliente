@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="estilo.css">
+    <script src="main.js" cache="false"></script>
+    <title>CREAR USUARIO</title>
+</head>
+
+
+<body>
+    <div class="cuadroEjercicios">
+        <h2>CREAR USUARIO</h2>
+        <div>
+            <h3>FORMULARIO PARA CREAR USUARIO</h3>
+            <form id="formularioCrearUsuario" action="#" method="POST">
+                <div>
+                    <div>NO ESTE VACIO Y SOLO LETRAS O ESPACIO Y MAS O IGUAL A 3 LETRAS</div>
+                    <label for="nombre">NOMBRE</label>
+                    <input id="nombre" />
+                    <div id="erroresNombre" class="error">
+
+                    </div>
+                </div>
+                <div>
+                    <div>NO ESTE VACIO Y SOLO LETRAS O ESPACIO Y MAS O IGUAL A 3 LETRAS</div>
+                    <label for="apellidos">APELLIDOS</label>
+                    <input id="apellidos" />
+                    <div id="erroresApellidos" class="error">
+
+                    </div>
+                </div>
+                <div>
+                    <div>SOLO NÚMEROS Y MAYOR QUE 18</div>
+                    <label for="edad">EDAD</label>
+                    <input id="edad" />
+                    <div id="erroresEdad" class="error">
+
+                    </div>
+                </div>
+                <div>
+                    <label for="profesion">PROFESIÓN</label>
+                    <select id="profesion">
+                        <option value="ninguna">NINGUNA</option>
+                        <option value="profesor">PROFESOR</option>
+                        <option value="limpiador">LIMPIADOR</option>
+                        <option value="administrador">ADMINISTRADOR</option>
+                        <option value="recepcionista">RECEPCIONISTA</option>
+                    </select>
+                    <div id="erroresProfesion" class="error">
+
+                    </div>
+                </div>
+                <div>
+                    <label for="politica"><input type="checkbox" id="politica" value="politica">¿Aceptar Política de
+                        Datos?</label>
+                    <div id="erroresPolitica" class="error">
+
+                    </div>
+                </div>
+                <button id="ENVIAR">CREAR USUARIO</button>
+            </form>
+            <div id="nombreUsuario"></div>
+            <div id="apellidosUsuario"></div>
+            <div id="edadUsuario"></div>
+            <div id="profesionUsuario"></div>
+            <div id="politicaUsuario"></div>
+        </div>
+    </div>
+</body>
+
+</html>
