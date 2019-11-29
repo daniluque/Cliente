@@ -1,0 +1,11 @@
+.error {
+    border: 1px solid red;
+    background: red;
+    color: black;
+}
+
+.acierto {
+    border: 1px solid green;
+    background: green;
+    color: black;
+}

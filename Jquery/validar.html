@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="scripts/jquery-3.4.1.min.js"></script>
+    <script src="scripts/validarFormulario.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<div class="formulario">
+    <form action="#" method="get">
+
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre">
+        <div id="erroresNombre"></div>
+        <br>
+        <label for="tiempo">Tiempo</label>
+        <input type="number" name="tiempo" id="tiempo" />
+        <div id="erroresTiempo"></div>
+        <br>
+        <select name="select" id="select">
+            <option value="ninguno">Ninguno</option>
+            <option value="redes">Redes</option>
+            <option value="desarrollo">Desarrollo</option>
+            <option value="analisis">Analisis</option>
+            <option value="refactor">Refactorizacion</option>
+        </select>
+        <div id="select"></div>
+        <br>
+        <label for="beneficios">
+        <input type="radio" name="beneficios" value="corto-plazo">Corto Plazo<br>
+        <input type="radio" name="beneficios" value="largo-plazo">Largo Plazo<br>
+        <div id="erroresBeneficio"></div>
+    </label>
+        <label for="programador">Programador</label>
+        <input type="checkbox" id="programador" value="programador" />
+        <label for="analisis">Analisis</label>
+        <input type="checkbox" id="analisis" value="analisis" />
+        <br>
+        <div id="erroresPersonal"></div>
+        <button type="submit" id="enviar">Enviar</button>
+    </form>
+</div>
+
+<body>
+
+</body>
+
+</html>
