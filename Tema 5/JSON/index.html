@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Ejemplo Ajax</title>
+    <link rel="stylesheet" href="css/css.css">
+    <script src="js/funcionesAjax.js" defer></script>
+    <script src="js/pruebas.js" defer></script>
+</head>
+
+<body>
+    <div id="spinner" class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+    </div>
+
+
+    <div>
+        <h1>PETICIÓN ASÍNCRONA- OBTENER DATOS JSON</h1>
+        <div>
+            <p>Al pulsar el botón ejercutaremos una petición Ajax Asíncrona que tratara los datos JSON</p>
+            <button onclick="funcionAjaxAsincronaJSON();">Ejecutar LLamada Asincrona JSON</button>
+        </div>
+        <div>
+            <h1>Resultados:</h1>
+            <div id="resultadoAsincronoJSON"></div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

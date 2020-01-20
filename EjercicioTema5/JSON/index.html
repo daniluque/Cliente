@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Cachimbas</title>
+    <script src="ejemplo.css"></script>
+    <script src="prueba.js" defer></script>
+</head>
+
+<body>
+    <div id="spinner" class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+    </div>
+    <div>
+        <form id="formulario" action="">
+            <div>
+                <label>ID</label>
+                <input type="text" id="id" name="id">
+            </div>
+            <div>
+                <label>Marca</label>
+                <select name="marca" id="marca">
+                    <option value="kaya">Kaya</option>
+                    <option value="duman">Duman</option>
+                </select>
+                <br>
+                <label for="">Mas de 10 €</label>
+                <input type="checkbox" name="precio" id="precio">
+                <br>
+                <label for="">Modelo</label>
+                <textarea name="modelo" id="modelo" cols="30" rows="10"></textarea>
+            </div>
+
+            <input type="submit" id="boton" value="Enviar" />
+        </form>
+    </div>
+    <div id="respuesta">
+
+    </div>
+
+</body>
+
+</html>
