@@ -20,19 +20,50 @@ function validarNombre() {
     incluirSpinner(inputNombre);
     let miXHR = objetoXHR();
     miXHR.open("POST", "./servidor/validadorFormularioAjax.php");
-    miXHR.onreadystatechange = comprobarEstadoPeticionnum1;
+    miXHR.onreadystatechange = comprobarEstadoPeticionNombre;
     miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    miXHR.send(inputNombre.val());
+    miXHR.send("nombre=" + inputNombre.val());
 }
 
 function validarApellido() {
-    let inputnum2 = $("#apellido");
-    incluirSpinner(inputnum2);
+    let inputApellido = $("#apellido");
+    let inputNombre = $("#nombre");
+    incluirSpinner(inputApellido);
     let miXHR = objetoXHR();
     miXHR.open("POST", "./servidor/validadorFormularioAjax.php");
-    miXHR.onreadystatechange = comprobarEstadoPeticionnum2;
+    miXHR.onreadystatechange = comprobarEstadoPeticionApellido;
     miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    miXHR.send(inputApellido.val());
+    miXHR.send("apellido=" + inputApellido.val() + "&nombre=" + inputNombre.val());
+}
+
+function validarEdad() {
+    let inputEdad = $("#edad");
+    incluirSpinner(inputEdad);
+    let miXHR = objetoXHR();
+    miXHR.open("POST", "./servidor/validadorFormularioAjax.php");
+    miXHR.onreadystatechange = comprobarEstadoPeticionEdad;
+    miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    miXHR.send("edad=" + inputEdad.val());
+}
+
+function validarProfesion() {
+    let inputProfesion = $("#profesion");
+    incluirSpinner(inputProfesion);
+    let miXHR = objetoXHR();
+    miXHR.open("POST", "./servidor/validadorFormularioAjax.php");
+    miXHR.onreadystatechange = comprobarEstadoPeticionProfesion;
+    miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    miXHR.send("profesion=" + inputProfesion.val());
+}
+
+function validarTerminos() {
+    let inputTerminos = $("#terminos:checked");
+    incluirSpinner(inputTerminos);
+    let miXHR = objetoXHR();
+    miXHR.open("POST", "./servidor/validadorFormularioAjax.php");
+    miXHR.onreadystatechange = comprobarEstadoPeticionTerminos;
+    miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    miXHR.send("terminos=" + inputTerminos.val());
 }
 
 function validarFormulario() {
@@ -42,46 +73,83 @@ function validarFormulario() {
 
 function validacionFormularioAjax() {
     $("#modal").modal("show");
-    let inputnum1 = $("#num1");
-    let inputnum2 = $("#num2");
+    let inputNombre = $("#nombre");
+    let inputApellido = $("#apellido");
+    let inputEdad = $("#edad");
+    let inputProfesion = $("#profesion");
+    let inputTerminos = $("#terminos:checked");
     let miXHR = objetoXHR();
     miXHR.open("POST", "./servidor/validadorFormularioAjax.php");
     miXHR.onreadystatechange = comprobarEstadoPeticionFormulario;
     miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    miXHR.send("num1=" + inputnum1.val() + "&" + "num2=" + inputnum2.val());
+    miXHR.send("nombre=" + inputNombre.val() + "&apellido=" + inputApellido.val() + "&edad=" + inputEdad.val() + "&profesion=" + inputProfesion.val() + "&terminos=" + inputTerminos.val());
 }
 
 
-function comprobarEstadoPeticionnum1() {
+function comprobarEstadoPeticionNombre() {
     if (this.readyState == 4 && this.status == 200) {
         let errores = JSON.parse(this.responseText);
-        let inputnum1 = $("#num1");
-        gestionarErrores(inputnum1, errores.num1);
+        let inputNombre = $("#nombre");
+        gestionarErrores(inputNombre, errores.nombre);
     }
 }
 
-function comprobarEstadoPeticionnum2() {
+function comprobarEstadoPeticionApellido() {
     if (this.readyState == 4 && this.status == 200) {
         let errores = JSON.parse(this.responseText);
-        let input = $("#num2");
-        gestionarErrores(input, errores.num2);
+        let input = $("#apellido");
+        gestionarErrores(input, errores.apellido);
+    }
+}
+
+function comprobarEstadoPeticionEdad() {
+    if (this.readyState == 4 && this.status == 200) {
+        let errores = JSON.parse(this.responseText);
+        let input = $("#edad");
+        gestionarErrores(input, errores.edad);
+    }
+}
+
+function comprobarEstadoPeticionProfesion() {
+    if (this.readyState == 4 && this.status == 200) {
+        let errores = JSON.parse(this.responseText);
+        let input = $("#profesion");
+        gestionarErrores(input, errores.profesion);
+    }
+}
+
+function comprobarEstadoPeticionTerminos() {
+    if (this.readyState == 4 && this.status == 200) {
+        let errores = JSON.parse(this.responseText);
+        let input = $("#terminos");
+        gestionarErrores(input, errores.terminos);
     }
 }
 
 function comprobarEstadoPeticionFormulario() {
     if (this.readyState == 4 && this.status == 200) {
         let errores = JSON.parse(this.responseText);
-        let inputnum1 = $("#num1");
-        let inputnum2 = $("#num2");
-        let hayErroresnum1 = gestionarErrores(inputnum1, errores.num1);
-        let hayErroresnum2 = gestionarErrores(inputnum2, errores.num2);
-        if (!hayErroresnum1 && !hayErroresnum2) {
+        let inputNombre = $("#nombre");
+        let inputApellido = $("#apellido");
+        let inputEdad = $("#edad");
+        let inputProfesion = $("#profesion");
+        let inputTerminos = $("#terminos:checked");
+        let hayErroresNombre = gestionarErrores(inputNombre, errores.nombre);
+        let hayErroresApellido = gestionarErrores(inputApellido, errores.apellido);
+        let hayErroresEdad = gestionarErrores(inputEdad, errores.edad);
+        let hayErroresProfesion = gestionarErrores(inputProfesion, errores.profesion);
+        let hayErroresTerminos = gestionarErrores(inputTerminos, errores.terminos);
+        if (!hayErroresNombre && !hayErroresApellido && !hayErroresEdad && !hayErroresProfesion && !hayErroresTerminos) {
             let formulario = $("#formulario");
             formulario.submit();
         }
         $("#modal").modal("hide");
     }
 }
+
+
+
+
 
 function gestionarErrores(input, errores) {
     var hayErrores = false;

@@ -13,19 +13,20 @@ if(isset($_POST["nombre"])){
 }
 
 if(isset($_POST["apellido"])){
-    $errores["apellido"] = validarApellido(trim($_POST["apellido"]));
+    $errores["apellido"] = validarApellido(trim($_POST["apellido"]),trim($_POST["nombre"]));
+    
 }
 
 if(isset($_POST["edad"])){
-    $errores["edad"] = validarApellido(trim($_POST["edad"]));
+    $errores["edad"] = validarEdad(trim($_POST["edad"]));
 }
 
 if(isset($_POST["profesion"])){
-    $errores["profesion"] = validarApellido(trim($_POST["profesion"]));
+    $errores["profesion"] = validarProfesion(trim($_POST["profesion"]));
 }
 
 if(isset($_POST["terminos"])){
-    $errores["terminos"] = validarApellido(trim($_POST["terminos"]));
+    $errores["terminos"] = validarTerminos(trim($_POST["terminos"]));
 }
 
 

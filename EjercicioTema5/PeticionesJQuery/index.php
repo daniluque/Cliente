@@ -32,37 +32,35 @@
 <body>
 <div class="container">
     <div class="row">
-        <form>
-            <div class="form-group">
+        <form id="formulario" onsubmit ="validarFormulario()">
+            
                 <label for="nombre">Nombre</label>
                 <input type="text" class="form-control" id="nombre" onchange="validarNombre()">
-            </div>
-
-            <div class="form-group">
+                <div class="error bg-danger"></div>
+              
                 <label for="apellido">Apellido</label>
-                <input type="text" class="form-control" id="apellido">
-            </div>
+                <input type="text" class="form-control" id="apellido" onchange="validarApellido()">
+                <div class="error bg-danger"></div>
 
-            <div class="form-group">
+            
                 <label for="edad">Edad</label>
-                <input type="text" class="form-control" id="edad">
-            </div>
+                <input type="text" class="form-control" id="edad" onchange="validarEdad()">
+                <div class="error bg-danger"></div>
+            
 
-            <div class="form-group">
+            
                 <label for="prefesion">Profesion</label>
-                <select id="profesion" class="form-control">
-                    <option selected value="informatico">Informatico</option>
+                <select id="profesion" class="form-control" onchange="validarProfesion()">
+                    <option value="">--------</option>
+                    <option value="informatico">Informatico</option>
                     <option value="front">Front-end</option>
                     <option value="fullstack">Full-stack</option>
                 </select>
-            </div>
+                <div class="error bg-danger"></div>
             
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="terminos">
-                <label class="form-check-label">
-                Terminos y condiciones
-                </label>
-            </div>
+                <label class="form-check-label">Terminos y condiciones</label>
+                <input class="form-check-input" type="checkbox" id="terminos" onchange="validarTerminos()">
+                <div class="error bg-danger"></div>
 
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
