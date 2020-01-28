@@ -17,9 +17,10 @@ function objetoXHR() {
 
 function validarNombre() {
     let inputNombre = $("#nombre");
-    incluirSpinner(inputNombre);
+    
     let miXHR = objetoXHR();
     miXHR.open("POST", "./servidor/validadorFormularioAjax.php");
+    incluirSpinner(inputNombre);
     miXHR.onreadystatechange = comprobarEstadoPeticionNombre;
     miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     miXHR.send("nombre=" + inputNombre.val());
