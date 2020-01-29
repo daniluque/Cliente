@@ -5,8 +5,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Ejemplo Ajax</title>
-    <link rel="stylesheet" href="style/css.css">
-    <script src="js/puebasFetch.js"></script>
+
     <!-- Incluimos librería Bootstrap css-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
         integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
@@ -25,7 +24,7 @@
         </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/puebasFetch.js"></script>
-    <link rel="stylesheet" href="css.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -35,9 +34,9 @@
     </div>
     <div class="container">
         <h2>Modificar Campo con Fetch</h2>
-        <form action="">
+        <form>
             <h3>Seleccione Id</h3>
-            <select name="" id="select" id="id">
+            <select name="" id="select" id="id" onchange="validarId()">
                 <option value=""></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -45,6 +44,8 @@
                 <option value="4">4</option>
             </select>
             <input type="text" placeholder="Nombre nuevo..." id="nombre" onchange="validarNombre()">
+            <div class="error bg-danger"></div>
+
             <input type="submit" value="Enviar" onclick="editar()">
             <div class="resultado">
 

@@ -23,6 +23,31 @@ function validarNombre() {
         });
 }
 
+function validarSelect() {
+
+    let id = $("#id").val();
+    let Input = $("id");
+    let form = new FormData();
+
+    form.append("id", id);
+    alert("SE VA A EJECUTAR LA PETICIÓN");
+    fetch("servidor/validadorFormularioAjax.php", {
+        method: 'post',
+        body: form
+    })
+        .then(function (response) { return response.json() })
+        .then(function (response) {
+            gestionarErrores(Input, response.id)
+        })
+        .catch(function (err) {
+            console.log("Error");
+            alert("Se ha producido un errorrrr");
+        })
+        .finally(function () {
+            $("#spinner").css("display", "none");
+        });
+}
+
 function gestionarErrores(input, errores) {
     var hayErrores = false;
     let divErrores = input.next();

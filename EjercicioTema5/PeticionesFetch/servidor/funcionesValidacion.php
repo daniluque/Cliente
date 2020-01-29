@@ -8,3 +8,10 @@ function validarNombre($nombre){
     return $errores;
 }
 
+function validarId($id){
+    $errores = array();
+    if($id === "") {
+    $errores[] = "El id no puede estara vacio";
+    }
+    return $errores;
+}
