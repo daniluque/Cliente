@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Ejemplo Ajax</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" >
-
+    
     <!-- Incluimos librería Bootstrap css-->
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
@@ -26,6 +26,7 @@
             integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
             crossorigin="anonymous">
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/validacion.js" defer></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -33,6 +34,10 @@
 <div class="container">
     <div class="row">
         <form id="formulario" onsubmit ="validarFormulario()">
+        <div id="spinner" class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+        </div>
             
                 <label for="nombre">Nombre</label>
                 <input type="text" class="form-control" id="nombre" onchange="validarNombre()">
@@ -46,8 +51,6 @@
                 <label for="edad">Edad</label>
                 <input type="text" class="form-control" id="edad" onchange="validarEdad()">
                 <div class="error bg-danger"></div>
-            
-
             
                 <label for="prefesion">Profesion</label>
                 <select id="profesion" class="form-control" onchange="validarProfesion()">
@@ -63,9 +66,27 @@
                 <div class="error bg-danger"></div>
 
             <button type="submit" class="btn btn-primary">Enviar</button>
+
+            <div id="resultado"></div>
         </form>
     </div>
 </div>
+
+
+<div class="modal fade" id="modal" data-backdrop="static">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">VALIDANDO</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated w-100 bg-info" role="progressbar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 </body>
 </html>

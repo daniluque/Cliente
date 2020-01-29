@@ -13,59 +13,122 @@ function objetoXHR() {
     throw new Error("No se pudo crear el objeto XMLHTTPRequest");
 }
 
-
-
 function validarNombre() {
-    let inputNombre = $("#nombre");
-    
-    let miXHR = objetoXHR();
-    miXHR.open("POST", "./servidor/validadorFormularioAjax.php");
-    incluirSpinner(inputNombre);
-    miXHR.onreadystatechange = comprobarEstadoPeticionNombre;
-    miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    miXHR.send("nombre=" + inputNombre.val());
+    let nombreInput = $("#nombre").val();
+    let input = $("#nombre");
+
+    $.ajax({
+        url: "./servidor/validadorFormularioAjax.php",
+        data: { nombre: nombreInput },
+        method: "POST",
+        dataType: "JSON",
+        beforeSend: function () { $("#spinner").css("display", "block"); },
+        success: function (text) {
+            gestionarErrores(input, text.nombre);
+        }
+    })
+        .fail(function () {
+            alert("ERROR EN LA PETICION");
+            $("#error").html("SE HA PRODUCIDO UN ERROR EN LA PETICIÓN");
+        })
+        .always(function () {
+            $("#spinner").css("display", "none");
+        });
 }
 
+
+
 function validarApellido() {
-    let inputApellido = $("#apellido");
-    let inputNombre = $("#nombre");
-    incluirSpinner(inputApellido);
-    let miXHR = objetoXHR();
-    miXHR.open("POST", "./servidor/validadorFormularioAjax.php");
-    miXHR.onreadystatechange = comprobarEstadoPeticionApellido;
-    miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    miXHR.send("apellido=" + inputApellido.val() + "&nombre=" + inputNombre.val());
+    let inputapellido = $("#apellido").val();
+    let inputnombre = $("#nombre").val();
+    let Input = $("#apellido");
+    $.ajax({
+        url: "./servidor/validadorFormularioAjax.php",
+        data: { apellido: inputapellido, nombre: inputnombre },
+        method: "POST",
+        dataType: "JSON",
+        beforeSend: function () { $("#spinner").css("display", "block"); },
+        success: function (text) {
+            gestionarErrores(Input, text.apellido);
+        }
+    })
+        .fail(function () {
+            alert("ERROR EN LA PETICION");
+            $("#resultado").html("SE HA PRODUCIDO UN ERROR EN LA PETICIÓN");
+        })
+        .always(function () {
+            $("#spinner").css("display", "none");
+        });
 }
 
 function validarEdad() {
-    let inputEdad = $("#edad");
-    incluirSpinner(inputEdad);
-    let miXHR = objetoXHR();
-    miXHR.open("POST", "./servidor/validadorFormularioAjax.php");
-    miXHR.onreadystatechange = comprobarEstadoPeticionEdad;
-    miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    miXHR.send("edad=" + inputEdad.val());
+    let inputedad = $("#edad").val();
+    let Input = $("#edad");
+    $.ajax({
+        url: "./servidor/validadorFormularioAjax.php",
+        data: { edad: inputedad },
+        method: "POST",
+        dataType: "JSON",
+        beforeSend: function () { $("#spinner").css("display", "block"); },
+        success: function (text) {
+            gestionarErrores(Input, text.edad);
+        }
+    })
+        .fail(function () {
+            alert("ERROR EN LA PETICION");
+            $("#resultado").html("SE HA PRODUCIDO UN ERROR EN LA PETICIÓN");
+        })
+        .always(function () {
+            $("#spinner").css("display", "none");
+        });
 }
 
 function validarProfesion() {
-    let inputProfesion = $("#profesion");
-    incluirSpinner(inputProfesion);
-    let miXHR = objetoXHR();
-    miXHR.open("POST", "./servidor/validadorFormularioAjax.php");
-    miXHR.onreadystatechange = comprobarEstadoPeticionProfesion;
-    miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    miXHR.send("profesion=" + inputProfesion.val());
+
+    let inputprofesion = $("#profesion").val();
+    let Input = $("#profesion");
+    $.ajax({
+        url: "./servidor/validadorFormularioAjax.php",
+        data: { profesion: inputprofesion },
+        method: "POST",
+        dataType: "JSON",
+        beforeSend: function () { $("#spinner").css("display", "block"); },
+        success: function (text) {
+            gestionarErrores(Input, text.profesion);
+        }
+    })
+        .fail(function () {
+            alert("ERROR EN LA PETICION");
+            $("#resultado").html("SE HA PRODUCIDO UN ERROR EN LA PETICIÓN");
+        })
+        .always(function () {
+            $("#spinner").css("display", "none");
+        });
+
 }
 
 function validarTerminos() {
-    let inputTerminos = $("#terminos:checked");
-    incluirSpinner(inputTerminos);
-    let miXHR = objetoXHR();
-    miXHR.open("POST", "./servidor/validadorFormularioAjax.php");
-    miXHR.onreadystatechange = comprobarEstadoPeticionTerminos;
-    miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    miXHR.send("terminos=" + inputTerminos.val());
+    let inputterminos = $("#terminos:checked").val();
+    let Input = $("#terminos")
+    $.ajax({
+        url: "./servidor/validadorFormularioAjax.php",
+        data: { terminos: inputterminos },
+        method: "POST",
+        dataType: "JSON",
+        beforeSend: function () { $("#spinner").css("display", "block"); },
+        success: function (text) {
+            gestionarErrores(Input, text.terminos);
+        }
+    })
+        .fail(function () {
+            alert("ERROR EN LA PETICION");
+            $("#resultado").html("SE HA PRODUCIDO UN ERROR EN LA PETICIÓN");
+        })
+        .always(function () {
+            $("#spinner").css("display", "none");
+        });
 }
+/* VALIDACION DEL FORMULARIO COMPLETO */
 
 function validarFormulario() {
     event.preventDefault();
@@ -73,83 +136,48 @@ function validarFormulario() {
 }
 
 function validacionFormularioAjax() {
-    $("#modal").modal("show");
-    let inputNombre = $("#nombre");
-    let inputApellido = $("#apellido");
-    let inputEdad = $("#edad");
-    let inputProfesion = $("#profesion");
-    let inputTerminos = $("#terminos:checked");
-    let miXHR = objetoXHR();
-    miXHR.open("POST", "./servidor/validadorFormularioAjax.php");
-    miXHR.onreadystatechange = comprobarEstadoPeticionFormulario;
-    miXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    miXHR.send("nombre=" + inputNombre.val() + "&apellido=" + inputApellido.val() + "&edad=" + inputEdad.val() + "&profesion=" + inputProfesion.val() + "&terminos=" + inputTerminos.val());
-}
+    let inputnombre = $("#nombre");
+    let inputapellido = $("#apellido");
+    let inputedad = $("#edad");
+    let inputprofesion = $("#profesion");
+    let inputterminos = $("#terminos:checked");
+    $.ajax({
+        url: "./servidor/validadorFormularioAjax.php",
+        data: { nombre: inputnombre.val(), apellido: inputapellido.val(), edad: inputedad.val(), profesion: inputprofesion.val(), terminos: inputterminos.val() },
+        method: "POST",
+        dataType: "JSON",
+        beforeSend: function () { $("#spinner").css("display", "block"); },
+        success: function (text) {
+            gestionarErrores(inputnombre, text.nombre);
+            gestionarErrores(inputapellido, text.apellido);
 
+            gestionarErrores(inputedad, text.edad);
+            gestionarErrores(inputprofesion, text.profesion);
 
-function comprobarEstadoPeticionNombre() {
-    if (this.readyState == 4 && this.status == 200) {
-        let errores = JSON.parse(this.responseText);
-        let inputNombre = $("#nombre");
-        gestionarErrores(inputNombre, errores.nombre);
-    }
-}
+            gestionarErrores(inputterminos, text.terminos);
 
-function comprobarEstadoPeticionApellido() {
-    if (this.readyState == 4 && this.status == 200) {
-        let errores = JSON.parse(this.responseText);
-        let input = $("#apellido");
-        gestionarErrores(input, errores.apellido);
-    }
-}
+            if (gestionarErrores(inputnombre, text.nombre) === false && gestionarErrores(inputapellido, text.apellido) === false &&
+                gestionarErrores(inputedad, text.edad) === false && gestionarErrores(inputprofesion, text.profesion) === false &&
+                gestionarErrores(inputterminos, text.terminos) === false) {
+                $.ajax({
+                    url: "./servidor/insertarDatos.php",
+                    data: { nombre: inputnombre.val(), apellido: inputapellido.val(), edad: inputedad.val(), profesion: inputprofesion.val(), terminos: inputterminos.val() },
+                    method: "POST",
+                    dataType: "JSON",
+                });
+                $("#resultado").html("Se ha creado correctamente");
+            }
 
-function comprobarEstadoPeticionEdad() {
-    if (this.readyState == 4 && this.status == 200) {
-        let errores = JSON.parse(this.responseText);
-        let input = $("#edad");
-        gestionarErrores(input, errores.edad);
-    }
-}
-
-function comprobarEstadoPeticionProfesion() {
-    if (this.readyState == 4 && this.status == 200) {
-        let errores = JSON.parse(this.responseText);
-        let input = $("#profesion");
-        gestionarErrores(input, errores.profesion);
-    }
-}
-
-function comprobarEstadoPeticionTerminos() {
-    if (this.readyState == 4 && this.status == 200) {
-        let errores = JSON.parse(this.responseText);
-        let input = $("#terminos");
-        gestionarErrores(input, errores.terminos);
-    }
-}
-
-function comprobarEstadoPeticionFormulario() {
-    if (this.readyState == 4 && this.status == 200) {
-        let errores = JSON.parse(this.responseText);
-        let inputNombre = $("#nombre");
-        let inputApellido = $("#apellido");
-        let inputEdad = $("#edad");
-        let inputProfesion = $("#profesion");
-        let inputTerminos = $("#terminos:checked");
-        let hayErroresNombre = gestionarErrores(inputNombre, errores.nombre);
-        let hayErroresApellido = gestionarErrores(inputApellido, errores.apellido);
-        let hayErroresEdad = gestionarErrores(inputEdad, errores.edad);
-        let hayErroresProfesion = gestionarErrores(inputProfesion, errores.profesion);
-        let hayErroresTerminos = gestionarErrores(inputTerminos, errores.terminos);
-        if (!hayErroresNombre && !hayErroresApellido && !hayErroresEdad && !hayErroresProfesion && !hayErroresTerminos) {
-            let formulario = $("#formulario");
-            formulario.submit();
         }
-        $("#modal").modal("hide");
-    }
+    })
+        .fail(function () {
+            alert("ERROR EN LA PETICION");
+            $("#resultado").html("SE HA PRODUCIDO UN ERROR EN LA PETICIÓN");
+        })
+        .always(function () {
+            $("#spinner").css("display", "none");
+        });
 }
-
-
-
 
 
 function gestionarErrores(input, errores) {
@@ -157,13 +185,13 @@ function gestionarErrores(input, errores) {
     let divErrores = input.next();
     divErrores.html("");
     input.removeClass("bg-success bg-danger");
-    if (errores.length === 0) {
+    if (Object.keys(errores).length === 0) {
         input.addClass("bg-success");
     } else {
         hayErrores = true;
         input.addClass("bg-danger");
-        for (let error of errores) {
-            divErrores.append("<div>" + error + "</div>");
+        for (let i = 0; Object.keys(errores).length > i; i++) {
+            divErrores.append("<div>" + errores[i] + "</div>");
         }
     }
     input.parent().next().remove();

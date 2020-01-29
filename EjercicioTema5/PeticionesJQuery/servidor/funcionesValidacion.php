@@ -1,5 +1,5 @@
 <?php
-sleep(2);
+
 function validarNombre($nombre){
     $errores = array();
     if($nombre === "") {
@@ -40,7 +40,7 @@ function validarEdad($edad){
 function validarProfesion($profesion){
     $errores = array();
     if($profesion === "") {
-    $errores[] = "La edad esta vacio";
+    $errores[] = "La PROFESION esta vacio";
     }
     return $errores;
 }

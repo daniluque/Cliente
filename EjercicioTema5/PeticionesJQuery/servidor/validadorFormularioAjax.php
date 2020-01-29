@@ -30,4 +30,4 @@ if(isset($_POST["terminos"])){
 }
 
 
-echo json_encode($errores);
+echo json_encode($errores,JSON_FORCE_OBJECT);
