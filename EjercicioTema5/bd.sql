@@ -1,4 +1,4 @@
-CREATE TABLE `tienda_cachimbas`.`cachimba` 
+CREATE TABLE `cachimbas`.`cachimba` 
 ( `id` INT NULL AUTO_INCREMENT , 
 `marca` VARCHAR(255) NOT NULL , 
 `modelo` VARCHAR(255) NOT NULL , 
